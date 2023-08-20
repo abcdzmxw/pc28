@@ -1,7 +1,7 @@
 <template>
   <div class="lt-list" >
     <div class="lt-item" v-for="(item, index) in list" :key="index">
-      <div class="t1">{{item.name}}</div>
+    
       <div class="t2">{{item.issue.last_issue}}{{$t('lun')}}</div>
       <div class="t3">{{$t('dianwei')}}：{{item.issue.last_code||0}}</div>
     </div>
