@@ -48,12 +48,7 @@
               <p>{{ $t('bangdingyinhangka') }}</p>
             </div>
           </li>
-          <li @click="changebane(1)">
-            <div class="square">
-              <img src="@/assets/image/qianbao.png" class="" alt="" />
-              <p>{{ $t('bangdingxuniqianbao') }}</p>
-            </div>
-          </li>
+
           <li @click="changeSetSecurityCode">
             <div class="square">
               <img src="@/assets/image/anquan.png" class="" alt="" />
