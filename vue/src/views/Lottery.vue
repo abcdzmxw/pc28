@@ -14,15 +14,7 @@
       <div>
         <div class="tab-box-wrap">
           <ul class="tab-box">
-            <li
-              v-for="(item, index) in gameList"
-              :key="index"
-              class="tab"
-              :class="curr == index ? 'active' : ''"
-              @click="curr = index + 1"
-            >
-              {{ item.name }}
-            </li>
+            
 
             <div class="tab_lines" :style="activeLines"></div>
           </ul>
