@@ -5,7 +5,8 @@ import state from "@/store/state";
 require("events").EventEmitter.defaultMaxListeners = 0;
 // create an axios instance
 const service = axios.create({
-  baseURL: "http://www.mitaobo.com/", //正式 - 服务器
+  //baseURL: "http://www.mitaobo.com/", //正式 - 服务器
+  baseURL: "https://test888.net/", //正式 - 服务器
   timeout: 7000, // request timeout
 });
 // const ignoreSSL = axios.create({
