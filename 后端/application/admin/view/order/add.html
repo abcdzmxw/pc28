@@ -1,0 +1,130 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Game_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-game_id" data-rule="required" min="0" data-source="game/index" class="form-control selectpage" name="row[game_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Issue_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-issue_id" data-rule="required" min="0" data-source="issue/index" class="form-control selectpage" data-field="issue" name="row[issue_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Quantity_log_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-quantity_log_id" data-rule="required" min="0" data-source="quantity_log/index" class="form-control selectpage" data-field="mark" name="row[quantity_log_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" min="0" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Orderno')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-orderNo" data-rule="required" class="form-control" name="row[orderNo]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Quantity')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-quantity" data-rule="required" class="form-control" step="0.01" name="row[quantity]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Play_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-play_type" data-rule="required" class="form-control" name="row[play_type]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Play_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-play_code" data-rule="required" class="form-control" name="row[play_code]" type="text" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Play_method')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-play_method" data-rule="required" class="form-control" name="row[play_method]" type="text" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lottery_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lottery_code" data-rule="required" class="form-control" name="row[lottery_code]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lottery_art')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-lottery_art" data-rule="required" class="form-control selectpicker" name="row[lottery_art]">
+                {foreach name="lotteryArtList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Profit')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-profit" data-rule="required" class="form-control" step="0.01" name="row[profit]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Began_quantity')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-began_quantity" data-rule="required" class="form-control" step="0.01" name="row[began_quantity]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('After_quantity')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-after_quantity" data-rule="required" class="form-control" step="0.01" name="row[after_quantity]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Whether_hit')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-whether_hit" data-rule="required" class="form-control selectpicker" name="row[whether_hit]">
+                {foreach name="whetherHitList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Odds')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-odds" data-rule="required" class="form-control" step="0.01" name="row[odds]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="-1"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

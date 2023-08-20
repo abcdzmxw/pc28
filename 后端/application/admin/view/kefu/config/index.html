@@ -1,0 +1,243 @@
+<style type="text/css">
+    .panel-body {
+        padding-top: 0;
+    }
+    .middle_inline {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 0;
+    }
+    .kefu_form_control .sp_container {
+        width: 100% !important;
+    }
+</style>
+<div class="row animated fadeInRight">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="box box-success">
+
+            <div class="panel-heading tabbable">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">常规配置</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">会话窗口</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">自动邀请</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">微信小程序</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="javascript:;" class="run_config">运行配置</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <form id="update-form" role="form" data-toggle="validator" method="POST" action="{:url('kefu.config/update')}">
+                    <div class="box-body tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                            <div class="form-group">
+                                <label for="chat_name" class="control-label">{:__('Chat name')}:</label>
+                                <input type="text" class="form-control" id="chat_name" name="row[chat_name]" value="{$config_list.chat_name|htmlentities}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">{:__('Ecs Exit')}:</label>
+                                {:build_radios('row[ecs_exit]', ['1'=>__('Ecs Exit 1'), '0'=>__('Ecs Exit 0')], $config_list.ecs_exit)}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">{:__('Send message key')}:</label>
+                                {:build_radios('row[send_message_key]', ['1'=>__('Send message key 1'), '0'=>__('Send message key 0')], $config_list.send_message_key)}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">{:__('Input status display')}:</label>
+                                {:build_radios('row[input_status_display]', ['0'=>__('Input status display 0'), '1'=>__('Input status display 1'), '2'=>__('Input status display 2')], $config_list.input_status_display)}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_user_tip" class="control-label">{:__('New user tip')}:</label>
+                                <input type="text" class="form-control" id="new_user_tip" name="row[new_user_tip]" value="{$config_list.new_user_tip|htmlentities}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_user_msg" class="control-label">{:__('New user msg')}:</label>
+                                <textarea rows="3" class="form-control" id="new_user_msg" name="row[new_user_msg]" value="">{$config_list.new_user_msg|htmlentities}</textarea>
+                                <span class="help-block">自动发送给新用户的消息，客服代表的欢迎语留空时，使用此处设置的作为欢迎语</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">客服分配方式:</label>
+                                {:build_radios('row[csr_distribution]', ['0' => '按工作强度', '1' => '智能分配', '2' => '轮流分配'], $config_list.csr_distribution)}
+                                <span class="help-block" id="distribution_help">
+                                    {switch name="config_list.csr_distribution"}
+                                        {case value="0"}按工作强度：优先分配给当前接待量最少的客服,若有多个客服接待量相同,则分配给其中最久未进行接待的客服{/case}
+                                        {case value="1"}智能分配：根据接待上限和当前接待量，分配给最能接待的客服{/case}
+                                        {case value="2"}轮流分配：每次都分配给最久未进行接待的客服{/case}
+                                        {default /}
+                                    {/switch}
+                                    
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">轨迹保存方案:</label>
+                                {:build_radios('row[trajectory_save_cycle]', ['0'=> '保留7天', '1'=> '保留30天', '2'=> '保留60天', '3'=> '永久保留'], $config_list.trajectory_save_cycle)}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">知识库自动回复(总开关):</label>
+                                {:build_radios('row[kbs_switch]', ['0'=> '关闭', '1'=> '开启'], $config_list.kbs_switch)}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_message_notice" class="control-label">新留言钉钉通知:</label>
+                                <textarea rows="3" class="form-control" id="new_message_notice" name="row[new_message_notice]" value="">{$config_list.new_message_notice|htmlentities}</textarea>
+                                <span class="help-block">此功能依赖插件《<a target="_blank" href="https://www.fastadmin.net/store/dinghorn.html">钉钉小喇叭</a>》，请在此处填写机器人ID，一行一个</span>
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab2">
+
+                            <div class="form-group">
+                                <label class="control-label">收到新消息抖动窗口:</label>
+                                {:build_radios('row[new_message_shake]', ['3'=> '抖动', '2'=> '仅客服端抖动', '1'=> '仅用户端抖动', '0'=> '不抖动'], $config_list.new_message_shake)}
+                                <span class="help-block">窗口为打开状态时，才会抖动</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="announcement" class="control-label">{:__('Announcement')}:</label>
+                                <textarea rows="3" class="form-control" id="announcement" name="row[announcement]" value="">{$config_list.announcement|htmlentities}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">{:__('Slider images')}:</label>
+                                <div class="input-group">
+                                    <input id="c-slider_images" class="form-control" size="50" name="row[slider_images]" type="text" value="{$config_list.slider_images}">
+                                    <div class="input-group-addon no-border no-padding">
+                                        <span><button type="button" id="plupload-slider_images" class="btn btn-danger plupload" data-input-id="c-slider_images" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-preview-id="p-slider_images"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                        <span><button type="button" id="fachoose-slider_images" class="btn btn-primary fachoose" data-input-id="c-slider_images" data-mimetype="image/*" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                                    </div>
+                                    <span class="msg-box n-right" for="c-slider_images"></span>
+                                </div>
+                                <ul class="row list-inline plupload-preview" id="p-slider_images"></ul>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">{:__('Chat introduces')}:</label>
+                                <textarea id="c-chat_introduces" class="form-control editor" rows="5" name="row[chat_introduces]" cols="50">{$config_list.chat_introduces|htmlentities}</textarea>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab3">
+                            <div class="form-group">
+                                <label class="control-label middle_inline">开启自动邀请:</label>
+                                <div class="middle_inline">
+                                    {:Form::switcher('row[auto_invitation_switch]', $config_list.auto_invitation_switch, ['color'=>'success'])}
+                                </div>
+                                <span class="help-block">开启时，将在指定时机，为用户弹出“邀请对话”窗口</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label middle_inline">仅首次访问自动邀请:</label>
+                                <div class="middle_inline">
+                                    {:Form::switcher('row[only_first_invitation]', $config_list.only_first_invitation, ['color'=>'success'])}
+                                </div>
+                                <span class="help-block">开启时，只在新用户首次访问时自动弹出邀请框</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label middle_inline">仅客服在线自动邀请:</label>
+                                <div class="middle_inline">
+                                    {:Form::switcher('row[only_csr_online_invitation]', $config_list.only_csr_online_invitation, ['color'=>'success'])}
+                                </div>
+                                <span class="help-block">开启时，只在有客服在线时自动弹出邀请框</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="auto_invitation_timing" class="control-label">自动邀请时机:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">停留</div>
+                                    <input type="text" class="form-control" id="auto_invitation_timing" name="row[auto_invitation_timing]" value="{$config_list.auto_invitation_timing|htmlentities}"/>
+                                    <div class="input-group-addon"><span class="text-warning">秒</span></div>
+                                </div>
+                                <span class="help-block">用户停留此秒数后，为用户弹出“邀请对话”窗口</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">邀请框背景:</label>
+                                <div class="input-group">
+                                    <input id="c-invite_box_img" class="form-control" size="50" name="row[invite_box_img]" type="text" value="{$config_list.invite_box_img}">
+                                    <div class="input-group-addon no-border no-padding">
+                                        <span><button type="button" id="plupload-invite_box_img" class="btn btn-danger plupload" data-input-id="c-invite_box_img" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-invite_box_img"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                        <span><button type="button" id="fachoose-invite_box_img" class="btn btn-primary fachoose" data-input-id="c-invite_box_img" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                                    </div>
+                                    <span class="msg-box n-right" for="c-invite_box_img"></span>
+                                </div>
+                                <ul class="row list-inline plupload-preview" id="p-invite_box_img"></ul>
+                                <span class="help-block">建议大小：400px*180px</span>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab5">
+
+                            <div class="form-group">
+                                <label for="wechat_app_id" class="control-label">小程序appId:</label>
+                                <input type="text" class="form-control" id="wechat_app_id" name="row[wechat_app_id]" value="{$config_list.wechat_app_id|htmlentities}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wechat_app_secret" class="control-label">小程序appSecret:</label>
+                                <input type="text" class="form-control" id="wechat_app_secret" name="row[wechat_app_secret]" value="{$config_list.wechat_app_secret|htmlentities}"/>
+                            </div>
+
+                            <hr class="divider">
+
+                            <span class="help-block">
+                                请登录小程序<a target="_blank" href="https://mp.weixin.qq.com/">MP后台</a>->开发->开发设置->消息推送->继续以下设置->请保存设置后微信端再进行验证
+                            </span>
+
+                            <div class="form-group">
+                                <label for="wechat_app_secret" class="control-label">服务器地址(url):</label>
+                                <input type="text" class="form-control" readonly="readonly" value="http://您的域名/api/kefu/acceptWxMsg"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wechat_token" class="control-label">通信令牌(token):</label>
+                                <input type="text" placeholder="英文或数字,3-32字符" class="form-control" id="wechat_token" name="row[wechat_token]" value="{$config_list.wechat_token|htmlentities}"/>
+                                <span class="help-block">任意填写，需与MP后台->开发->开发设置->消息推送中的Token一致</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wechat_encodingkey" class="control-label">解密密钥(EncodingAESKey):</label>
+                                <input type="text" placeholder="英文或数字,43位字符" class="form-control" id="wechat_encodingkey" name="row[wechat_encodingkey]" value="{$config_list.wechat_encodingkey|htmlentities}"/>
+                                <span class="help-block">任意填写，需与MP后台->开发->开发设置->消息推送中的EncodingAESKey一致</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wechat_app_secret" class="control-label">消息加密模式:</label>
+                                <input type="text" class="form-control" readonly="readonly" value="安全模式"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wechat_app_secret" class="control-label">数据格式:</label>
+                                <input type="text" class="form-control" readonly="readonly" value="JSON"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <button type="submit" class="btn btn-success">{:__('Submit')}</button>
+                            <button type="reset" class="btn btn-default">{:__('Reset')}</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

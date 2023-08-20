@@ -1,0 +1,118 @@
+<div class="panel panel-default panel-intro">
+
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+<!--        <ul class="nav nav-tabs" data-field="status">
+            <li class="{:$Think.get.status === null ? 'active' : ''}"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="statusList" item="vo"}
+            <li class="{:$Think.get.status === (string)$key ? 'active' : ''}"><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>-->
+    </div>
+
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+<!--                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('game/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>-->
+<!--                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('game/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>-->
+<!--                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('game/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>-->
+<!--                        <a href="javascript:;" class="btn btn-danger btn-import {:$auth->check('game/import')?'':'hide'}" title="{:__('Import')}" id="btn-import-file" data-url="ajax/upload" data-mimetype="csv,xls,xlsx" data-multiple="false"><i class="fa fa-upload"></i> {:__('Import')}</a>-->
+
+<!--                        <div class="dropdown btn-group {:$auth->check('game/multi')?'':'hide'}">-->
+<!--                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>-->
+<!--                            <ul class="dropdown-menu text-left" role="menu">-->
+<!--                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>-->
+<!--                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+
+<!--                        <a class="btn btn-success btn-recyclebin btn-dialog {:$auth->check('game/recyclebin')?'':'hide'}" href="game/recyclebin" title="{:__('Recycle bin')}"><i class="fa fa-recycle"></i> {:__('Recycle bin')}</a>-->
+                        <a href="javascript:;" class="btn btn-default" style="font-size:14px;color:dodgerblue;">
+                            <i class="fa fa-dollar"></i>
+                                充值汇总：<span id="recharge">0</span>&nbsp;&nbsp;&nbsp;
+                                提现汇总：<span id="withdraw">0</span>&nbsp;&nbsp;&nbsp;
+                                消费汇总：<span id="expand">0</span>&nbsp;&nbsp;&nbsp;
+                                盈利汇总：<span id="profit">0</span>&nbsp;&nbsp;&nbsp;
+                                中奖汇总：<span id="winning">0</span>&nbsp;&nbsp;&nbsp;
+                                余额汇总：<span id="balance">0</span>&nbsp;&nbsp;&nbsp;
+                                彩金汇总：<span id="handsel">0</span>&nbsp;&nbsp;&nbsp;
+                                赠送汇总：<span id="give">0</span>&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('game/edit')}"
+                           data-operate-del="{:$auth->check('game/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script id="customformtpl" type="text/html">
+    <!--form表单必须添加form-commsearch这个类-->
+    <form action="" class="form-commonsearch">
+        <div style="border-radius:2px;margin-bottom:10px;background:#f5f5f5;padding:15px 20px;">
+<!--            <h4></h4>-->
+<!--            <hr>-->
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">员工ID</label>
+                        <!--显式的operate操作符-->
+                        <input class="operate" type="hidden" data-name="id" value="="/>
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="id" placeholder="" value=""/>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-xs-12 col-sm-6 col-md-3">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="control-label">标题</label>-->
+<!--                        &lt;!&ndash;隐式的operate操作符，必须携带一个class为operate隐藏的文本框,且它的data-name="字段",值为操作符&ndash;&gt;-->
+<!--                        -->
+<!--                        <div>-->
+<!--                            <input class="form-control" type="text" name="title" placeholder="请输入查找的标题" value=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-12 col-sm-6 col-md-3">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="control-label">用户ID</label>-->
+<!--                        &lt;!&ndash;显式的operate操作符&ndash;&gt;-->
+<!--                        <div class="input-group">-->
+<!--                            <input class="form-control" type="text" name="id" placeholder="" value=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">统计时间</label>
+                        <input type="hidden" class="operate" data-name="createtime" value="RANGE"/>
+                        <div>
+                            <input type="text" class="form-control datetimerange" name="createtime" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type="submit" class="btn btn-success btn-block" value="提交"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="reset" class="btn btn-primary btn-block" value="重置"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>

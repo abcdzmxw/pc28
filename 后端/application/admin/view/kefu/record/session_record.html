@@ -1,0 +1,135 @@
+<style type="text/css">
+    .chat {
+        box-sizing: border-box;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+    }
+    .record_item {
+        margin-top: 8px;
+    }
+    .user_name {
+        font-weight: bold;
+    }
+    .bubble {
+        font-size: 16px;
+        position: relative;
+        display: inline-block;
+        clear: both;
+        left: 6px;
+        margin-bottom: 8px;
+        padding: 13px 14px;
+        vertical-align: top;
+        border-radius: 5px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    .bubble.you {
+        background: #eceff1;
+        color: #1a1a1a;
+    }
+    .bubble.me {
+        background: #00b0ff;
+        color: #fff;
+    }
+    .bubble:before {
+        position: absolute;
+        top: 19px;
+        display: block;
+        width: 8px;
+        height: 6px;
+        content: '\00a0';
+        -webkit-transform: rotate(29deg) skew(-35deg);
+        transform: rotate(29deg) skew(-35deg);
+    }
+    .bubble.you:before {
+        left: -4px;
+        background-color: #eceff1;
+    }
+    .bubble.me:before {
+        left: -4px;
+        background-color: #00b0ff;
+    }
+    .bubble .emoji {
+        width: 40px;
+        height: 40px;
+    }
+    .bubble .record {
+        max-height: 200px;
+        color: #fff;
+    }
+    .status {
+        position: relative;
+        float: right;
+        width: 100%;
+        /* margin: 20px 0; */
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .status span {
+        font-size: 12px;
+        display: inline-block;
+        background: #ccc;
+        color: #fff;
+        line-height: 12px;
+        border-radius: 5px;
+        padding: 3px 10px;
+    }
+    .record_card {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 8px 8px 8px 8px;
+    }
+    .record_card img {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+    }
+    .record_card .record_card_body {
+        height: 90px;
+        width: 100%;
+        margin: 0 8px;
+        cursor: pointer;
+    }
+    .record_card .record_card_title {
+        font-size: 15px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: 18px;
+        height: 36px;
+        color: #0d0d0d;
+    }
+    .record_card .record_card_note {
+        font-size: 14px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: 16px;
+        height: 32px;
+        color: #999999;
+        margin-top: 3px;
+    }
+    .record_card .record_card_price span:last-child {
+        margin-left: 10px;
+        color: #999999;
+        font-size: 14px;
+    }
+    .record_card .record_card_price span:first-child {
+        margin-left: -3px;
+        font-size: 18px;
+        color: rgba(231, 76, 60, 1);
+    }
+</style>
+<div class="chat">
+
+</div>

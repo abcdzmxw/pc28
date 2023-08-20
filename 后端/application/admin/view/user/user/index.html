@@ -1,0 +1,57 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        {:build_toolbar('refresh,add,edit,del')}
+                        <div class="dropdown btn-group {:$auth->check('user/user/multi')?'':'hide'}">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
+
+                            </ul>
+                        </div>
+                        <a href="javascript:give()" class="btn btn-success {:$auth->check('user/user/give')?'':'hide'}" title="{:__('赠送彩金')}" ><i class="fa fa-plus"></i> {:__('赠送彩金')}</a>
+                        <a href="javascript:addPoints()" class="btn btn-success {:$auth->check('user/user/addpoints')?'':'hide'}" title="{:__('添加上分')}" ><i class="fa fa-plus"></i> {:__('添加上分')}</a>
+                    </div>
+
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('user/user/edit')}"
+                           data-operate-del="{:$auth->check('user/user/del')}"
+                           width="100%">
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function give()
+    {
+
+        layer.open({
+            title:'赠送彩金',
+            type: 2,
+            content: 'user/give', //这里content是一个普通的String,
+            area: ['800px', '600px']
+        });
+        //layer.msg('hello');
+    }
+    function addPoints()
+    {
+
+        layer.open({
+            title:'添加上分',
+            type: 2,
+            content: 'user/addpoints', //这里content是一个普通的String,
+            area: ['800px', '600px']
+        });
+        //layer.msg('hello');
+    }
+</script>
