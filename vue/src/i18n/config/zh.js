@@ -58,7 +58,7 @@ const zh={
     chiakren:'持卡人',
     yinhangkakahao:'银行卡卡号',
     yinhangmingcheng:'银行名称',
-    yhkTps:'请绑定持卡人本人的银行卡',
+    yhkTps:'请绑定持卡人本人的银行卡（暂不支持招商银行，平安银行）',
     nixiqianbaodizhi:'虚拟钱包地址',
     xuniqianbaoleixing:'虚拟钱包类型',
     xnqbTps:' 温馨提示：请填写USDT地址类型，如：trc20、erc20、omni ',

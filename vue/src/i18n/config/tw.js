@@ -58,7 +58,7 @@ const tw={
     chiakren:'持卡人',
     yinhangkakahao:'銀行戶口號',
     yinhangmingcheng:'銀行名稱',
-    yhkTps:'請綁定持卡人本人的銀行卡',
+    yhkTps:'請綁定持卡人本人的銀行卡（暫不支持招商銀行，平安銀行）',
     nixiqianbaodizhi:'虛擬錢包地址',
     xuniqianbaoleixing:'虛擬錢包類型',
     xnqbTps:' 溫馨提示：請填寫USDT地址類型，如：trc20、erc20、omni。',
