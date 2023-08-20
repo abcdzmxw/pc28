@@ -228,10 +228,7 @@ export default {
     };
   },
   watch: {
-    game_id(newVal) {
-      
-      this.showIssueChange();
-    },
+    
   },
   methods: {
     findList(base) {
@@ -268,11 +265,10 @@ export default {
   },
   mounted() {},
   created() {
-            let  myDate = new Date();
-       let time=  myDate.toLocaleDateString();
-         this.time=time
-
-    this.showIssueChange();
+           
+      let  myDate = new Date();
+      let time=  myDate.toLocaleDateString();
+      this.time=time
   },
 };
 </script>
