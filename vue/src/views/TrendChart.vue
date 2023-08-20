@@ -188,40 +188,7 @@
       </div>
     </div>
     <!-- 遮罩层 -->
-    <van-overlay v-model:show="showTitle" @click="showTitle = false">
-      <div class="content">
-        <ul class="lottery-list clear fs-12">
-          <li
-            class="lottery-item"
-            :class="game_id == 1 ? 'activeli' : ''"
-            @click="game_id = 1"
-          >
-            <div class="text">SINGAPORE</div>
-          </li>
-          <li
-            class="lottery-item"
-            :class="game_id == 2 ? 'activeli' : ''"
-            @click="game_id = 2"
-          >
-            <div class="text">NEW ZEALAND</div>
-          </li>
-          <li
-            class="lottery-item"
-            :class="game_id == 3 ? 'activeli' : ''"
-            @click="game_id = 3"
-          >
-            <div class="text">KUALA LUMPUR</div>
-          </li>
-          <li
-            class="lottery-item"
-            :class="game_id == 4 ? 'activeli' : ''"
-            @click="game_id = 4"
-          >
-            <div class="text">AUSTRALIA</div>
-          </li>
-        </ul>
-      </div>
-    </van-overlay>
+ 
     <!-- 时间选择 -->
     <van-popup
       v-model:show="showTime"
@@ -262,15 +229,7 @@ export default {
   },
   watch: {
     game_id(newVal) {
-      if (newVal == 1) {
-        this.name = "SINGAPORE";
-      } else if (newVal == 2) {
-        this.name = "NEW ZEALAND";
-      } else if (newVal == 3) {
-        this.name = "KUALA LUMPUR";
-      } else if (newVal == 4) {
-        this.name = "AUSTRALIA";
-      }
+      
       this.showIssueChange();
     },
   },
@@ -312,16 +271,7 @@ export default {
             let  myDate = new Date();
        let time=  myDate.toLocaleDateString();
          this.time=time
-    this.game_id = this.$route.query.game_id;
-    if (this.game_id == 1) {
-      this.name = "SINGAPORE";
-    } else if (this.game_id == 2) {
-      this.name = "NEW ZEALAND";
-    } else if (this.game_id == 3) {
-      this.name = "KUALA LUMPUR";
-    } else if (this.game_id == 4) {
-      this.name = "AUSTRALIA";
-    }
+
     this.showIssueChange();
   },
 };
