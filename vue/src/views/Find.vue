@@ -1,13 +1,7 @@
 <template>
   <div class="find">
     <div>
-      <van-tabs v-model="active" animated swipeable>
-        <van-tab v-for="(item, index) in gameList" :key="index">
-          <template #title>
-            <span @click="onClick(item.id)">{{ item.name }} </span></template
-          >
-        </van-tab>
-      </van-tabs>
+      
       <div class="lengend">
         <div class="m-bar">
           <div class="line">
