@@ -16,7 +16,7 @@ const tw={
     wode:'我的',
     zuiditouzi:'最低投資',
     zuidijinru:'最低進入',
-    jichulicai:'新手仓',
+    jichulicai:'新手倉',
     zishenlicai:'青銅',
     dashilicai:'白銀',
     zhuanjialicai:'黃金',
