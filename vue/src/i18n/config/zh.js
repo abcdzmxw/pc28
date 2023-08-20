@@ -25,7 +25,7 @@ const zh={
     大师理财:'大师理财',
     专家理财:'专家理财',
     huiyuanquanyi:'会员权益',
-    zuoriyingli:'昨日盈利',
+    zuoriyingli:'信誉分',
     zongzichan:'总资产',
     chucunjin:'储存金',
     jinriyingli:'今日盈利',

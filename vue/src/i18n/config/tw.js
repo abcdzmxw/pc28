@@ -25,7 +25,7 @@ const tw={
     大师理财:'大師理財',
     专家理财:'專家理財',
     huiyuanquanyi:'會員權益',
-    zuoriyingli:'昨日盈利',
+    zuoriyingli:'信譽分',
     zongzichan:'總資產',
     chucunjin:'儲存金',
     jinriyingli:'今日盈利',

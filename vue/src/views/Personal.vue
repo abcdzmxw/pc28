@@ -43,19 +43,19 @@
               <div class="cont-box">
                 <div class="asset">
                   <div class="asset-item">
-                    <span>{{ $t('zuoriyingli') }}(u)</span>
+                    <span>{{ $t('zuoriyingli') }}</span>
                     <span>{{ user.today_profit }}</span>
                   </div>
                   <div class="asset-item">
-                    <span>{{ $t('zongzichan') }}(u)</span>
+                    <span>{{ $t('zongzichan') }}</span>
                     <span>{{ user.money }}</span>
                   </div>
                   <div class="asset-item">
-                    <span>{{ $t('chucunjin') }}(u)</span>
+                    <span>{{ $t('chucunjin') }}</span>
                     <span>{{ user.score }}</span>
                   </div>
                   <div class="asset-item">
-                    <span>{{ $t('jinriyingli') }}(u)</span>
+                    <span>{{ $t('jinriyingli') }}</span>
                     <span>{{ user.profit }}</span>
                   </div>
                 </div>
