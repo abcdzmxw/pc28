@@ -21,7 +21,7 @@
                 <div class="balance">
                   <div class="money-box">
                     <p class="num" v-if="infoList">{{ infoList.money }}</p>
-                    <p>{{ $t("zongzichan") }}(u)</p>
+                    <p>{{ $t("zongzichan") }}</p>
                   </div>
                 </div>
                 <div class="withdraw-count">
@@ -45,38 +45,7 @@
                 </div>
                 <div class="pay-box">
                   <!-- 虚拟钱包 -->
-                  <div class="pay-type">
-                    <div class="type-catalog">
-                      <div class="bank-title">{{ $t("xuanzehb") }}</div>
-                    </div>
-                    <ul>
-                      <li>
-                        <div
-                          class="conetnt"
-                          @click="selectActive = 1"
-                          v-if="
-                            infoList &&
-                            infoList.pay_list &&
-                            infoList.pay_list.length != 0 &&
-                            infoList.pay_list[0]
-                          "
-                        >
-                          <div class="title">
-                            <h2>{{ infoList.pay_list[0].acc_name }}</h2>
-                            <p class="fs-12">{{ infoList.pay_list[0].acc }}</p>
-                          </div>
-                          <div class="radio">
-                            <label
-                              class="advice"
-                              :class="
-                                selectActive == 1 ? 'advice-hl' : 'advice-nor'
-                              "
-                            ></label>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+                  
 					<div class="pay-type">
                     <div class="type-catalog">
                       <div class="bank-title">{{ $t("xuanzeyh") }}</div>
