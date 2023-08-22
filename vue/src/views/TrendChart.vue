@@ -31,36 +31,22 @@
             <span>{{$t('hezhi')}}</span>
             <!-- <span class="c_a0a0a0">1</span> -->
           </div>
+
+
           <div class="td">
-            <span>{{$t('多单')}}</span>
-            <!-- <span class="c_a0a0a0">2</span> -->
-          </div>
-          <div class="td">
-            <span>{{$t('空单')}}</span>
-            <!-- <span class="c_a0a0a0">3</span> -->
-          </div>
-          <div class="td">
-            <span>{{$t('多双')}}</span>
-            <!-- <span class="c_a0a0a0">4</span> -->
-          </div>
-          <div class="td">
-            <span>{{$t('空双')}}</span>
-            <!-- <span class="c_a0a0a0">5</span> -->
-          </div>
-          <div class="td">
-            <span>{{$t('做多')}}</span>
+            <span>{{$t('高')}}</span>
             <!-- <span class="c_a0a0a0">6</span> -->
           </div>
           <div class="td">
-            <span>{{$t('做空')}}</span>
+            <span>{{$t('低')}}</span>
             <!-- <span class="c_a0a0a0">9</span> -->
           </div>
           <div class="td">
-            <span>{{$t('平单')}}</span>
+            <span>{{$t('多')}}</span>
             <!-- <span class="c_a0a0a0">7</span> -->
           </div>
           <div class="td">
-            <span>{{$t('平双')}}</span>
+            <span>{{$t('空')}}</span>
             <!-- <span class="c_a0a0a0">8</span> -->
           </div>
         </div>
@@ -76,111 +62,63 @@
               <div class="td hezhi">
                 <span class="ball fs-12 ball-green">{{ item.code }}</span>
               </div>
+              
+
+
               <div
                 class="td"
                 :class="
-                  item.base[0] == '多单' || item.base[1] == '多单'|| item.join == '多单' || item.join == '多單'
+                  item.base[0] == '高' || item.base[1] == '高'
                     ? 'select'
                     : ''
                 "
               >
                 {{
-                  item.base[0] == "多单" || item.base[1] == "多单"||item.join == "多单" || item.join == "多單" ? $t('多单') : ""
+                  item.base[0] == "高" || item.base[1] == "高" ? $t('高') : ""
                 }}
               </div>
               <div
                 class="td"
                 :class="
-                  item.base[0] == '空单' || item.base[1] == '空单'|| item.join == '空单' || item.join == '空單'
+                  item.base[0] == '低' || item.base[1] == '低'
                     ? 'select'
                     : ''
                 "
               >
                 {{
-                  item.base[0] == "空单" || item.base[1] == "空单"||   item.join == "空单" || item.join == "空單" ?$t('空单') : ""
+                  item.base[0] == "低" || item.base[1] == "低" ? $t('低') : ""
                 }}
               </div>
               <div
                 class="td"
                 :class="
-                  item.base[0] == '多双' || item.base[1] == '多双'||item.join == '多双' || item.join == '多雙'
+                  item.base[0] == '多' || item.base[1] == '多'||item.base[0] == '多' || item.base[1] == '多'
                     ? 'select'
                     : ''
                 "
               >
                 {{
-                  item.base[0] == "多双" || item.base[1] == "多双"||item.join == '多双' || item.join == '多雙' ? $t('多双') : ""
+                  item.base[0] == "多" || item.base[1] == "多"||item.base[0] == '多' || item.base[1] == '多' ?$t('多') : ""
                 }}
               </div>
               <div
                 class="td"
                 :class="
-                  item.base[0] == '空双' || item.base[1] == '空双'||item.join == '空双' || item.join == '空雙'
+                  item.base[0] == '空' || item.base[1] == '空'||item.base[0] == '空' || item.base[1] == '空'  
                     ? 'select'
                     : ''
                 "
               >
                 {{
-                  item.base[0] == "空双" || item.base[1] == "空双"||item.join == '空双' || item.join == '空雙' ?$t('空双') : ""
-                }}
-              </div>
-              <div
-                class="td"
-                :class="
-                  item.base[0] == '做多' || item.base[1] == '做多'
-                    ? 'select'
-                    : ''
-                "
-              >
-                {{
-                  item.base[0] == "做多" || item.base[1] == "做多" ? $t('做多') : ""
-                }}
-              </div>
-              <div
-                class="td"
-                :class="
-                  item.base[0] == '做空' || item.base[1] == '做空'
-                    ? 'select'
-                    : ''
-                "
-              >
-                {{
-                  item.base[0] == "做空" || item.base[1] == "做空" ? $t('做空') : ""
-                }}
-              </div>
-              <div
-                class="td"
-                :class="
-                  item.base[0] == '平单' || item.base[1] == '平单'||item.base[0] == '平單' || item.base[1] == '平單'
-                    ? 'select'
-                    : ''
-                "
-              >
-                {{
-                  item.base[0] == "平单" || item.base[1] == "平单"||item.base[0] == '平單' || item.base[1] == '平單' ?$t('平单') : ""
-                }}
-              </div>
-              <div
-                class="td"
-                :class="
-                  item.base[0] == '平双' || item.base[1] == '平双'||item.base[0] == '平雙' || item.base[1] == '平雙'  
-                    ? 'select'
-                    : ''
-                "
-              >
-                {{
-                  item.base[0] == "平双" || item.base[1] == "平双"||item.base[0] == '平雙' || item.base[1] == '平雙'   ? $t('平双') : ""
+                  item.base[0] == "空" || item.base[1] == "空"||item.base[0] == '空' || item.base[1] == '空'   ? $t('空') : ""
                 }}
               </div>
               <!-- <div class="td select">
-                {{ findList(item.base) ? "多单" : "" }}
+           
               </div>
-              <div class="td select">空单</div>
-              <div class="td select">多双</div>
-              <div class="td select">空双</div>
-              <div class="td select">做多</div>
+              <div class="td select">高</div>
               <div class="td select">做双</div>
-              <div class="td select">平单</div>
+              <div class="td select">多</div>
               <div class="td select">平空</div> -->
             </div>
           </div>
@@ -222,7 +160,7 @@ export default {
       currentDate: new Date(),
       game_id: "",
       issueList: "",
-      list: ["多单", "空单", "多双", "空双", "做多", "做空", "平单", "平双"],
+      list: [  "高", "低", "多", "空"],
       indexOne: "",
       time:''
     };

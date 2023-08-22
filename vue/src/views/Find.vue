@@ -7,42 +7,16 @@
           <div class="line">
             <div class="line-big"></div>
           </div>
-          <div class="bar-text">{{ $t("做多") }}</div>
+          <div class="bar-text">{{ $t("高") }}</div>
         </div>
         <div class="m-bar">
           <div class="line">
             <div class="line-big"></div>
           </div>
-          <div class="bar-text">{{ $t("做空") }}</div>
+          <div class="bar-text">{{ $t("低") }}</div>
         </div>
-        <div class="m-bar">
-          <div class="line">
-            <div class="line-small"></div>
-            <div class="line-big"></div>
-          </div>
-          <div class="bar-text">{{ $t("多单") }}</div>
-        </div>
-        <div class="m-bar">
-          <div class="line">
-            <div class="line-small"></div>
-            <div class="line-big"></div>
-          </div>
-          <div class="bar-text">{{ $t("多双") }}</div>
-        </div>
-        <div class="m-bar">
-          <div class="line">
-            <div class="line-small"></div>
-            <div class="line-big"></div>
-          </div>
-          <div class="bar-text">{{ $t("空单") }}</div>
-        </div>
-        <div class="m-bar">
-          <div class="line">
-            <div class="line-small"></div>
-            <div class="line-big"></div>
-          </div>
-          <div class="bar-text">{{ $t("空双") }}</div>
-        </div>
+
+
       </div>
       <div
         id="echartContainer"
