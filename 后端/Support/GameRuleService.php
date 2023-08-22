@@ -23,12 +23,12 @@ class GameRuleService
         2 => '低',
         3 => '多',
         4 => '空',
-        11 => '多单',
-        12 => '多双',
-        13 => '空单',
-        14 => '空双',
-        21 => '极阴',
-        22 => '极阳',
+        //11 => '多单',
+        //12 => '多双',
+        //13 => '空单',
+        //14 => '空双',
+        //21 => '极阴',
+        //22 => '极阳',
         31 => '豹',
         32 => '顺',
         33 => '对',
@@ -630,7 +630,7 @@ class GameRuleService
                 $message['issue'] = $tempIssue;
                 $message['user_id']= 0;
                 $message['id']= time();
-                $rand = mt_rand(0, 7);
+                $rand = mt_rand(0, 3);
                 $message['nickname'] = randCnStr(2,mt_rand(0,2))."***";
                 $message['play_method'] = array_values(IdentifyDanDan::PAY_CLASS)[$rand];;
                 $message['play_type'] = array_keys(IdentifyDanDan::PAY_CLASS)[$rand];
