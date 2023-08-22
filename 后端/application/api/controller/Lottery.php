@@ -50,6 +50,7 @@ class Lottery extends Api
             ->where('game_plan_id', $planId)
             ->whereIn('class', [1, 2, 3, 4, 11, 12, 13, 14, 21, 22])
             ->whereNull('deletetime')
+            ->where('status', 1)
             ->select();
         $result['rule_num'] = Db::name('plan_rule')
             ->where('game_plan_id', $planId)
@@ -229,10 +230,10 @@ class Lottery extends Api
     public function cand()
     {
        $temp = [
-           "多单"=>[1, 5, 1, 1],
-           "多双"=>[1, 5, 7, 1],
-           "空单"=>[5, 1, 1, 1],
-           "空双"=>[5, 1, 7, 1]];
+           "高多"=>[1, 5, 1, 1],
+           "低多"=>[1, 5, 7, 1],
+           "低空"=>[5, 1, 1, 1],
+           "高空"=>[5, 1, 7, 1]];
         $gameId = $this->request->param('game_id');
 //        $date = $this->request->param('date');
 //        if (empty($date)) {
@@ -242,6 +243,7 @@ class Lottery extends Api
 //            $nowIssue = str_replace('-','',$date);
 //        }
         $nowIssue = GameRuleService::nowIssue()['issue'];
+
         $id = (int)Db::name('issue')->where(['issue'=> $nowIssue,'game_id'=>$gameId])->value('id');
         $issueList = Db::name('issue')
             ->where('game_id', $gameId)
@@ -252,8 +254,11 @@ class Lottery extends Api
         array_walk($issueList, function (&$issue)use ($temp) {
             $issue['base'] = GameRuleService::lotteryBase($issue);
             $key_str = implode('',$issue['base']);
+
             $issue['join'] = str_replace(['做','平'],'',$key_str);
+
             $issue['cand'] = $temp[$issue['join']];
+
             $rand = mt_rand(0,5);
             $issue['cand'] =  array_map(function ($data) use ($rand){
                 return $rand + $data;
