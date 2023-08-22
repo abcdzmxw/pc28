@@ -19,7 +19,7 @@ use think\Db;
 class GameRuleService
 {
     const RULE_CLASS = [
-        1 => '做多',
+        1 => '高',
         2 => '做空',
         3 => '平单',
         4 => '平双',
@@ -553,8 +553,8 @@ class GameRuleService
     public static function lotteryBase(array $Issue): array
     {
         $result = [];
-        if (isset(array_flip(explode(' ', IdentifyDanDan::NUM_CODE['做多']))[$Issue['code']])) {
-            $result[] = '做多';
+        if (isset(array_flip(explode(' ', IdentifyDanDan::NUM_CODE['高']))[$Issue['code']])) {
+            $result[] = '高';
         } else {
             $result[] = '做空';
         }

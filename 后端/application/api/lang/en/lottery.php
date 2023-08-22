@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '做多'                                          => 'Many',
+    '高'                                          => 'Many',
     '做空'                                          => 'Short',
     '平单'                                          => 'Flat Single',
     '平双'                                          => 'Flat Double',

@@ -195,7 +195,7 @@ class Lottery extends Api
         $result['last_issue']['base'] = $result['last_issue'] ? GameRuleService::lotteryBase($result['last_issue']) : null;
         $result['issue']['whether_close'] = GameRuleService::IsClose($result['issue']['issue']);
         
-        /*$result = Common::strReplace('做多', __('做多'), $result);*/
+        /*$result = Common::strReplace('高', __('高'), $result);*/
         $this->success('', $result);
     }
 

@@ -17,7 +17,7 @@ class IdentifyDanDan implements Identify
     private string $message = '';
     private BetInfo $betInfo;
     public const PAY_CLASS = [
-        1 => '做多',
+        1 => '高',
         2 => '做空',
         3 => '平单',
         4 => '平双',
@@ -100,7 +100,7 @@ class IdentifyDanDan implements Identify
         '平单' => '0 1 3 5 7 9 11 13 15 17 19 21 23 25 27',
         '平双' => '2 4 6 8 10 12 14 16 18 20 22 24 26',
         '做空' => '0 1 2 3 4 5 6 7 8 9 10 11 12 13',
-        '做多' => '14 15 16 17 18 19 20 21 22 23 24 25 26 27',
+        '高' => '14 15 16 17 18 19 20 21 22 23 24 25 26 27',
         '空单' => '0 1 3 5 6 7 9 11 13',
         '空双' => '2 4 6 8 10 12',
         '多单' => '15 17 19 21 23 25 27',
