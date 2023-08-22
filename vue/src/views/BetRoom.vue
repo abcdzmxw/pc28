@@ -343,6 +343,7 @@
         :style="{ height: '18%', width: '100%' }"
       >
         <div class="bet-sub-panel">
+          <!--
           <ul>
             <li
               :class="betselect == 0 ? 'betactive' : ''"
@@ -381,6 +382,7 @@
               <img src="@/assets/image/betall.png" alt="" />
             </li>
           </ul>
+           -->
           <div class="bottom-form">
             <span class="c_a0a0a0">{{$t('gourushuliang')}}：</span>
             <input type="number" v-model="sendValue" class="" />
