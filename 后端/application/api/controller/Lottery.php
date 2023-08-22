@@ -49,7 +49,7 @@ class Lottery extends Api
         $result['rule_base'] = Db::name('plan_rule')
             ->where('game_plan_id', $planId)
             ->whereIn('class', [1, 2, 3, 4, 11, 12, 13, 14, 21, 22])
-            ->whereNotNull('deletetime')
+            ->whereNull('deletetime')
             ->select();
         $result['rule_num'] = Db::name('plan_rule')
             ->where('game_plan_id', $planId)
