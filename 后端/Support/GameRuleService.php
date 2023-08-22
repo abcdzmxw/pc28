@@ -20,9 +20,9 @@ class GameRuleService
 {
     const RULE_CLASS = [
         1 => '高',
-        2 => '做空',
-        3 => '平单',
-        4 => '平双',
+        2 => '低',
+        3 => '多',
+        4 => '空',
         11 => '多单',
         12 => '多双',
         13 => '空单',
@@ -556,12 +556,12 @@ class GameRuleService
         if (isset(array_flip(explode(' ', IdentifyDanDan::NUM_CODE['高']))[$Issue['code']])) {
             $result[] = '高';
         } else {
-            $result[] = '做空';
+            $result[] = '低';
         }
-        if (isset(array_flip(explode(' ', IdentifyDanDan::NUM_CODE['平单']))[$Issue['code']])) {
-            $result[] = '平单';
+        if (isset(array_flip(explode(' ', IdentifyDanDan::NUM_CODE['多']))[$Issue['code']])) {
+            $result[] = '多';
         } else {
-            $result[] = '平双';
+            $result[] = '空';
         }
         return $result;
     }

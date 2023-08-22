@@ -2,9 +2,9 @@
 
 return [
     '高'                                          => 'Many',
-    '做空'                                          => 'Short',
-    '平单'                                          => 'Flat Single',
-    '平双'                                          => 'Flat Double',
+    '低'                                          => 'Short',
+    '多'                                          => 'Flat Single',
+    '空'                                          => 'Flat Double',
     '多单'                                          => 'Many Single',
     '多双'                                          => 'Many Double',
     '空单'                                          => 'Short Single',
