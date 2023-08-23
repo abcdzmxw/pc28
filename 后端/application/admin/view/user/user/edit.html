@@ -70,6 +70,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="c-xinyufen" class="control-label col-xs-12 col-sm-2">信誉分:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-xinyufen" data-rule="required" class="form-control" name="row[xinyufen]" type="number" value="{$row.xinyufen}">
+        </div>
+    </div>
+    <div class="form-group">
         <label for="c-gender" class="control-label col-xs-12 col-sm-2">{:__('Gender')}:</label>
         <div class="col-xs-12 col-sm-8">
             {:build_radios('row[gender]', ['1'=>__('Male'), '0'=>__('Female')], $row['gender'])}
