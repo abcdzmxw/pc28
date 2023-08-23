@@ -16,6 +16,7 @@ class User extends Model
     // 定义时间戳字段名
     protected $createTime = 'createtime';
     protected $updateTime = 'updatetime';
+    protected $xinyufen = 'xinyufen';
     // 追加属性
     protected $append = [
         'url',

@@ -27,7 +27,7 @@ class Auth
     //默认配置
     protected $config = [];
     protected $options = [];
-    protected $allowFields = ['id', 'username', 'nickname', 'mobile', 'avatar', 'money','score','group_id','idcard'];
+    protected $allowFields = ['id', 'username', 'nickname', 'mobile', 'avatar', 'money','score','group_id','idcard', 'xinyufen'];
 
     public function __construct($options = [])
     {
@@ -432,7 +432,13 @@ class Auth
         $groupData = array_combine($type,$groupData);
         if (empty($groupData["3"])) $groupData['3']['sums'] = '0';
         if (empty($groupData["2"])) $groupData['2']['sums'] = '0';
-        $userinfo['today_profit'] = bcadd($groupData['3']['sums'],$groupData['2']['sums'],0);
+
+        if ($userinfo['xinyufen']){
+            $userinfo['today_profit'] = $userinfo['xinyufen'];
+        } else {
+            $userinfo['today_profit'] = bcadd($groupData['3']['sums'],$groupData['2']['sums'],0);
+        }
+
         return $userinfo;
     }
 
