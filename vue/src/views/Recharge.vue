@@ -19,7 +19,7 @@
                 <div class="balance">
                   <div class="money-box">
                     <p class="num">{{ money }}</p>
-                    <p>{{$t('zongzichan')}}(u)</p>
+                    <p>{{$t('zongzichan')}}</p>
                   </div>
                 </div>
                 <div class="pay-box">
