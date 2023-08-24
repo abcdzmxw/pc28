@@ -54,8 +54,8 @@
                   </div>
                   <div class="item-bottom">
                     <span>{{ timeStr(item.createtime) }}</span>
-                    <span class="c_ff7d20">{{ item.quantity }}u</span>
-                    <span class="c_ff7d20">{{ item.over }}u</span>
+                    <span class="c_ff7d20">{{ item.quantity }}</span>
+                    <span class="c_ff7d20">{{ item.over }}</span>
                   </div>
                 </li>
               </template>

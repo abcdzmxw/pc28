@@ -103,6 +103,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         },
 
         add: function () {
+            $("#c-game_plan_id").data("params", function (){
+                return {custom: {game_id: $("#c-game_id").val()}};
+            });
             Controller.api.bindevent();
         },
         edit: function () {

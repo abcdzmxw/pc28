@@ -49,7 +49,7 @@ class Issue extends Backend
             $service = new GameRuleService();
             $game_id = (int)$this->request->param('game_id');
             while ($startDate->lt($endDate)){
-                $startDate->addMinutes(3);
+                $startDate->addMinutes(1);
 /*                $temp['issue'] = $startDate->rawFormat("YmdHis");
                 $temp['site_1'] = rand(0,9);
                 $temp['site_2'] = rand(0,9);
@@ -62,7 +62,7 @@ class Issue extends Backend
                 $issue->game_id = $game_id;
                 $issue->code = $issue->site_1 + $issue->site_2 + $issue->site_3;
                 $issue->issue =  $startDate->rawFormat("YmdHi");
-                $issue = $service->lotterySpecial($issue);
+                //$issue = $service->lotterySpecial($issue);
 
                 try {
                     $issue->save();

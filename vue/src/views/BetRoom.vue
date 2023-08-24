@@ -329,7 +329,7 @@
               <div class="bet-status">{{$t('zanweigouru')}}</div>
             </div>
             <div class="rightBetButton">
-              <div>1u{{$t('qigou')}}</div>
+              <div>1{{$t('qigou')}}</div>
             </div>
           </div>
         </div>
@@ -451,7 +451,7 @@
       <div>
         {{$t('gongxi')}}{{ Myprize[0].nickname }}{{$t('zai')}}{{ Myprize[0].game_name }}{{$t('yingli')}}{{
           Myprize[0].profit
-        }}U
+        }}
       </div>
     </div>
   </div>

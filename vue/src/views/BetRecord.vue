@@ -45,7 +45,7 @@
                 
                 <div class="item-bottom">
                   <span class="c_a0a0a0">{{$t('di')}}{{item.issue}}{{$t('lun')}}</span>
-                  <span class="c_fe5050">{{item.quantity}}u</span>
+                  <span class="c_fe5050">{{item.quantity}}</span>
                   <span></span>
                 </div>
               </li>

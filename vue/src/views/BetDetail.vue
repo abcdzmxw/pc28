@@ -27,12 +27,12 @@
               <div>
                 <div class="order-count">
                   <p class="c_a0a0a0">{{$t('jine')}}</p>
-                  <p class="count">{{ item.quantity }}u</p>
+                  <p class="count">{{ item.quantity }}</p>
                 </div>
                 <div class="prize">
                   <p class="c_a0a0a0">{{$t('yingli')}}</p>
                   <p class="count c_ff7d20">
-                    {{ item.status == 0 ? "----" : item.profit + "u" }}
+                    {{ item.status == 0 ? "----" : item.profit }}
                   </p>
                 </div>
               </div>
