@@ -39,7 +39,7 @@
             {{ $t("juli") }} {{ issue.issue }} {{ $t("lunjiezhi") }}
           </p>
           <template v-if="game_status == 1 && !whether_close">
-            <van-count-down :time="time">
+            <van-count-down :time="time" @finish="countdownFinished">
               <template #default="timeData">
                 <span class="block">{{ timeData.minutes }}</span>
                 <span class="colon">:</span>
@@ -536,6 +536,12 @@ export default {
     },
   },
   methods: {
+    countdownFinished() {
+      // 在倒计时结束时执行的操作
+      console.log('倒计时结束了，执行其他操作');
+      // 例如，可以触发某个方法、显示提示、刷新数据等等
+    },
+
     InputValeue(type) {
       if (type == 0) {
         this.sendValue = 5;

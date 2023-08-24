@@ -412,78 +412,10 @@ class GameRuleService
             case 2:
             case 3:
             case 4:
-
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-
-            case 21:
-            case 22:
                 if (!isset(array_flip(explode(' ', $order['play_code']))[$issue['code']])) {
                     $order['whether_hit'] = 0;
                     break;
                 }
-
-                $order['whether_hit'] = 1;
-                break;
-            case 31:
-                if ($issue['mark'] !== IdentifyDanDan::PAY_CLASS[31]) {
-                    $order['whether_hit'] = 0;
-                    break;
-                }
-                $order['whether_hit'] = 1;
-                break;
-            case 32:
-                if ($issue['mark'] !== IdentifyDanDan::PAY_CLASS[32]) {
-                    $order['whether_hit'] = 0;
-                    break;
-                }
-                $order['whether_hit'] = 1;
-                break;
-            case 33:
-                if ($issue['mark'] !== IdentifyDanDan::PAY_CLASS[33]) {
-                    $order['whether_hit'] = 0;
-                    break;
-                }
-                $order['whether_hit'] = 1;
-                break;
-            case  41:
-            case  42:
-            case  43:
-            case  44:
-            case  45:
-            case  46:
-            case  47:
-            case  48:
-            case  49:
-            case  410:
-            case  411:
-            case  412:
-            case  413:
-            case  414:
-            case 415:
-            case 416:
-            case 417:
-            case 418:
-            case 419:
-            case 420:
-            case 421:
-            case 422:
-            case 423:
-            case 424:
-            case 425:
-            case 426:
-            case 427:
-//                if ($order->play_code != IdentifyDanDan::PAY_CLASS_SINGLE[0][$order->play_class] and $order->play_code != IdentifyDanDan::PAY_CLASS_SINGLE[1][$order->play_class]) {
-//                    $order['whether_hit = 0;
-//                    break;
-//                }
-                if ($order['play_code'] != $issue['code']) {
-                    $order['whether_hit'] = 0;
-                    break;
-                }
-
                 $order['whether_hit'] = 1;
                 break;
             default:

@@ -3,7 +3,6 @@
 namespace app\task\controller;
 
 use Support\GameRuleService;
-use Support\Identify\Instance\IdentifyDanDan;
 use Support\LastMessage;
 use think\Controller;
 use think\Db;
@@ -12,10 +11,6 @@ class CarbonTask extends Controller
 {
     protected array $noNeedLogin = ['*'];
     protected array $noNeedRight = ['*'];
-
-
-
-
 
     public function settle()
     {
