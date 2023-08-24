@@ -329,7 +329,7 @@
               <div class="bet-status">{{$t('zanweigouru')}}</div>
             </div>
             <div class="rightBetButton">
-              <div>1u{{$t('qigou')}}</div>
+              <div>1{{$t('qigou')}}</div>
             </div>
           </div>
         </div>

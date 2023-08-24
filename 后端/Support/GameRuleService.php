@@ -29,9 +29,9 @@ class GameRuleService
         //14 => '空双',
         //21 => '极阴',
         //22 => '极阳',
-        31 => '豹',
-        32 => '顺',
-        33 => '对',
+        //31 => '豹',
+        //32 => '顺',
+        //33 => '对',
 //        34 => '豹回本',
 //        35 => '顺回本',
 //        36 => '对回本',
@@ -80,33 +80,33 @@ class GameRuleService
 //        85 => '下注限额豹顺对',
 //        86 => '下注限额总限额',
     ];
-    private array $reverseRule = [
-        1 => [2, 13, 14],
-        2 => [1, 11, 12],
-        3 => [4, 12, 14],
-        4 => [3, 11, 13],
-        11 => [14, 2, 4],
-        12 => [13, 2, 3],
-        13 => [12, 1, 4],
-        14 => [11, 1, 3],
-        21 => [22],
-        22 => [21]
-    ];
-
-
-    //豹顺对回本
-    private array $reverseRule1 = [
-        1 => 2,
-        2 => 1,
-        3 => 4,
-        4 => 3,
-        11 => 14,
-        12 => 13,
-        13 => 12,
-        14 => 11,
-        21 => 22,
-        22 => 21
-    ];
+//    private array $reverseRule = [
+//        1 => [2, 13, 14],
+//        2 => [1, 11, 12],
+//        3 => [4, 12, 14],
+//        4 => [3, 11, 13],
+//        11 => [14, 2, 4],
+//        12 => [13, 2, 3],
+//        13 => [12, 1, 4],
+//        14 => [11, 1, 3],
+//        21 => [22],
+//        22 => [21]
+//    ];
+//
+//
+//    //豹顺对回本
+//    private array $reverseRule1 = [
+//        1 => 2,
+//        2 => 1,
+//        3 => 4,
+//        4 => 3,
+//        11 => 14,
+//        12 => 13,
+//        13 => 12,
+//        14 => 11,
+//        21 => 22,
+//        22 => 21
+//    ];
 
     /**
      * 创建PC28房间配置
@@ -132,107 +132,107 @@ class GameRuleService
                 case 4:
                     $temp['odds'] = 2.2;
                     break;
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                    $temp['odds'] = 5;
-                    break;
-                case 21:
-                case 22:
-                    $temp['odds'] = 10;
-                    break;
-                case 31:
-                case 32:
-                case 33:
-                    $temp['odds'] = 50;
-                    break;
-                case 34:
-                case 35:
-                case 36:
-                    //豹顺对回本
-                    break;
-                case 41:
-                    $temp['odds'] = 1000;
-                    break;
-                case 42:
-                    $temp['odds'] = 900;
-                    break;
-                case 43:
-                    $temp['odds'] = 800;
-                    break;
-                case 44:
-                    $temp['odds'] = 700;
-                    break;
-                case 45:
-                    $temp['odds'] = 600;
-                    break;
-                case 46:
-                    $temp['odds'] = 500;
-                    break;
-                case 47:
-                    $temp['odds'] = 400;
-                    break;
-                case 48:
-                    $temp['odds'] = 300;
-                    break;
-                case 49:
-                    $temp['odds'] = 200;
-                    break;
-                case 410:
-                    $temp['odds'] = 100;
-                    break;
-                case 411:
-                    $temp['odds'] = 10;
-                    break;
-                case 412:
-                    $temp['odds'] = 5;
-                    break;
-                case 413:
-                    $temp['odds'] = 3;
-                    break;
-                case 414:
-                case 415:
-                    $temp['odds'] = 2;
-                    $temp['odds'] = 2;
-                    break;
-                case 51:
-                case 52:
-                    $temp['status'] = 0;
-                    $temp['odds'] = 1;
-                    break;
-                case 61:
-                    $temp['res'] = 0;
-                    $temp['odds'] = 2;
-                    $temp['limit_max'] = 4;
-                    $temp['limit_min'] = 4;
-                    $temp['status'] = 0;
-                    break;
-                case 62:
-                    $temp['res'] = 100;
-                    $temp['odds'] = 2;
-                    $temp['limit_max'] = 1;
-                    $temp['limit_min'] = 1;
-                    $temp['status'] = 0;
-                    break;
-                case 63:
-                    $temp['res'] = 100;
-                    $temp['odds'] = 1;
-                    $temp['limit_max'] = 1;
-                    $temp['limit_min'] = 1;
-                    $temp['status'] = 0;
-                    break;
-                case 81:
-                case 82:
-                case 83:
-                case 84:
-                case 85:
-                    $temp['limit_max'] = 2000;
-                    $temp['limit_min'] = 1;
-                    break;
-                case 86:
-                    $temp['odds'] = 5000;
-                    break;
+//                case 11:
+//                case 12:
+//                case 13:
+//                case 14:
+//                    $temp['odds'] = 5;
+//                    break;
+//                case 21:
+//                case 22:
+//                    $temp['odds'] = 10;
+//                    break;
+//                case 31:
+//                case 32:
+//                case 33:
+//                    $temp['odds'] = 50;
+//                    break;
+//                case 34:
+//                case 35:
+//                case 36:
+//                    //豹顺对回本
+//                    break;
+//                case 41:
+//                    $temp['odds'] = 1000;
+//                    break;
+//                case 42:
+//                    $temp['odds'] = 900;
+//                    break;
+//                case 43:
+//                    $temp['odds'] = 800;
+//                    break;
+//                case 44:
+//                    $temp['odds'] = 700;
+//                    break;
+//                case 45:
+//                    $temp['odds'] = 600;
+//                    break;
+//                case 46:
+//                    $temp['odds'] = 500;
+//                    break;
+//                case 47:
+//                    $temp['odds'] = 400;
+//                    break;
+//                case 48:
+//                    $temp['odds'] = 300;
+//                    break;
+//                case 49:
+//                    $temp['odds'] = 200;
+//                    break;
+//                case 410:
+//                    $temp['odds'] = 100;
+//                    break;
+//                case 411:
+//                    $temp['odds'] = 10;
+//                    break;
+//                case 412:
+//                    $temp['odds'] = 5;
+//                    break;
+//                case 413:
+//                    $temp['odds'] = 3;
+//                    break;
+//                case 414:
+//                case 415:
+//                    $temp['odds'] = 2;
+//                    $temp['odds'] = 2;
+//                    break;
+//                case 51:
+//                case 52:
+//                    $temp['status'] = 0;
+//                    $temp['odds'] = 1;
+//                    break;
+//                case 61:
+//                    $temp['res'] = 0;
+//                    $temp['odds'] = 2;
+//                    $temp['limit_max'] = 4;
+//                    $temp['limit_min'] = 4;
+//                    $temp['status'] = 0;
+//                    break;
+//                case 62:
+//                    $temp['res'] = 100;
+//                    $temp['odds'] = 2;
+//                    $temp['limit_max'] = 1;
+//                    $temp['limit_min'] = 1;
+//                    $temp['status'] = 0;
+//                    break;
+//                case 63:
+//                    $temp['res'] = 100;
+//                    $temp['odds'] = 1;
+//                    $temp['limit_max'] = 1;
+//                    $temp['limit_min'] = 1;
+//                    $temp['status'] = 0;
+//                    break;
+//                case 81:
+//                case 82:
+//                case 83:
+//                case 84:
+//                case 85:
+//                    $temp['limit_max'] = 2000;
+//                    $temp['limit_min'] = 1;
+//                    break;
+//                case 86:
+//                    $temp['odds'] = 5000;
+//                    break;
 
             }
             $ruleDataAll[] = $temp;
@@ -529,7 +529,7 @@ class GameRuleService
      * @return \app\admin\model\Issue
      */
     public function lotterySpecial(Issue $issue): Issue
-    {
+    {   //废弃方法 不用计算
         //$roomRuleConfig = $this->getRules($roomId);
         if ($issue->site_2 == $issue->site_1 or $issue->site_2 == $issue->site_3 or $issue->site_1 == $issue->site_3) {
             $issue->mark = self::RULE_CLASS[33];
