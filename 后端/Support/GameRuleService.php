@@ -606,8 +606,15 @@ class GameRuleService
 //               return;
             for (;$len<=mt_rand(2,5);$len++){
                 $message['nickname'] = randCnStr(2,mt_rand(0,2))."***";
-                $quantity = mt_rand(500, 90000);
-                $quantity_arr = str_split($quantity);
+               // $quantity = mt_rand(100, 90000);
+
+                $minAmount = 50;
+                $maxAmount = 90000;
+                $decimalPlaces = 2; // 小数位数
+                $randomAmount = $minAmount + mt_rand() / mt_getrandmax() * ($maxAmount - $minAmount);
+                $formattedAmount = number_format($randomAmount, $decimalPlaces);
+
+                // $quantity_arr = str_split($quantity);
 //                $resQuantity = 0;
 //                array_walk($quantity_arr,function ($num,$key) use ($quantity_arr,&$resQuantity){
 //                    if ($key == 0){
@@ -621,7 +628,7 @@ class GameRuleService
 //                    $resQuantity.='0';
 //                });
                 $message['id'] = time();
-                $message['profit'] = $quantity.'0';;
+                $message['profit'] = $formattedAmount;;
                 $message['user_id']= 0;
                 $message['game_name'] = $game['name'];
                 $message['game_id'] = $game['id'];

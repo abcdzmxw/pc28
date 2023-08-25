@@ -28,11 +28,9 @@ class Carbontask extends Api
         $orders = Db::name('order')->where('status',0)->select();
         $issueList = [];
         $count =0;
-        $gameList = Db::name('game')->where('status',1)->field(['id','name'])->select();
-        $roomList = Db::name('game_plan')->where('status',1)->select();
+        $gameList = Db::name('game')->where('status',1)->whereNull('deletetime')->field(['id','name'])->select();
+        //$roomList = Db::name('game_plan')->where('status',1)->select();
         $gameMap = array_column($gameList,'name','id');
-
-//        GameRuleService::makeRebootOrder($roomList);
 
         GameRuleService::makeRebootProfit($gameList);
         array_walk($orders,function ($order) use (&$count,&$issueList,$tempIssue,$gameMap,$Issue){
