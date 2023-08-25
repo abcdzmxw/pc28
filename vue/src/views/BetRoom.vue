@@ -39,7 +39,7 @@
             {{ $t("juli") }} {{ issue.issue }} {{ $t("lunjiezhi") }}
           </p>
           <template v-if="game_status == 1 && !whether_close">
-            <van-count-down :time="time" @finish="countdownFinished">
+            <van-count-down :time="time">
               <template #default="timeData">
                 <span class="block">{{ timeData.minutes }}</span>
                 <span class="colon">:</span>
@@ -126,7 +126,6 @@
             style="transition-duration: 2000ms"
             :style="transformSwiper"
           >
-            <!-- :style="transformSwiper" -->
 
             <ul class="msg-box fs-12" ref="swipercontant">
               <li class="msg-item">
@@ -255,13 +254,6 @@
               >
                 {{$t('shuzi')}}
               </li>
-              <!-- <li
-                class="category-item"
-                :class="swiperKeySlide == 2 ? 'PayActive' : ''"
-                @click="(swiperKeySlide = 2), changeTabPay(2)"
-              >
-                特殊
-              </li> -->
             </ul>
           </div>
           <div class="panel-body">
@@ -343,46 +335,7 @@
         :style="{ height: '18%', width: '100%' }"
       >
         <div class="bet-sub-panel">
-          <!--
-          <ul>
-            <li
-              :class="betselect == 0 ? 'betactive' : ''"
-              @click="(betselect = 0), InputValeue(0)"
-            >
-              <img src="@/assets/image/bet5.png" alt="" />
-            </li>
-            <li
-              :class="betselect == 1 ? 'betactive' : ''"
-              @click="(betselect = 1), InputValeue(1)"
-            >
-              <img src="@/assets/image/bet10.png" alt="" />
-            </li>
-            <li
-              :class="betselect == 2 ? 'betactive' : ''"
-              @click="(betselect = 2), InputValeue(2)"
-            >
-              <img src="@/assets/image/bet50.png" alt="" />
-            </li>
-            <li
-              :class="betselect == 3 ? 'betactive' : ''"
-              @click="(betselect = 3), InputValeue(3)"
-            >
-              <img src="@/assets/image/bet300.png" alt="" />
-            </li>
-            <li
-              :class="betselect == 4 ? 'betactive' : ''"
-              @click="(betselect = 4), InputValeue(4)"
-            >
-              <img src="@/assets/image/bet500.png" alt="" />
-            </li>
-            <li
-              :class="betselect == 5 ? 'betactive' : ''"
-              @click="(betselect = 5), InputValeue(5)"
-            >
-              <img src="@/assets/image/betall.png" alt="" />
-            </li>
-          </ul>
-           -->
+
           <div class="bottom-form">
             <span class="c_a0a0a0">{{$t('gourushuliang')}}：</span>
             <input type="number" v-model="sendValue" class="" />
@@ -499,6 +452,7 @@ export default {
       class: "",
       FollPayItem: "",
       whether_close: null,
+      last_whether_close : null,
       timeDataFun: null,
       daodibu: false,
       Myprize: [],
@@ -536,12 +490,6 @@ export default {
     },
   },
   methods: {
-    countdownFinished() {
-      // 在倒计时结束时执行的操作
-      console.log('倒计时结束了，执行其他操作');
-      // 例如，可以触发某个方法、显示提示、刷新数据等等
-    },
-
     InputValeue(type) {
       if (type == 0) {
         this.sendValue = 5;
@@ -872,6 +820,11 @@ export default {
                  this.user_quantity = data.data.user_quantity;
               this.whether_close = data.data.issue.whether_close;
               console.log(this.whether_close, "this.whether_close");
+
+              if(this.whether_close){
+                console.log('结算');
+              }
+              this.last_whether_close = this.whether_close;
 
               if (data.data.message.length != 0 && data.data.message) {
                 // let newlist = that.getResultArray(

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\task\controller;
+namespace app\api\controller;
 
 use app\common\controller\Api;
 use Support\GameRuleService;
@@ -8,13 +8,13 @@ use Support\LastMessage;
 use think\Controller;
 use think\Db;
 
-class CarbonTask extends Api
+class Carbontask extends Api
 {
     protected array $noNeedLogin = ['*'];
     protected array $noNeedRight = ['*'];
 
-    public function settle()
-    {
+    public function dingshijiesuan()
+    {   // 定时结算
         $carbon = \Carbon\Carbon::now('Asia/Shanghai');
         $Issue =GameRuleService::nowIssue();
         $tempIssue = $Issue['issue'];

@@ -43,6 +43,11 @@ export default {
 
     });
   },
+
+  // 结算
+  dingshijiesuan() {
+    return request.get("/api/carbontask/dingshijiesuan");
+  },
   cand(game_id) {
     return request.post("/api/Lottery/cand", {
       game_id: game_id,
