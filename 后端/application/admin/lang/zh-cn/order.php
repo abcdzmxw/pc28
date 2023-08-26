@@ -5,6 +5,7 @@ return [
     'Issue_id'        => '期号',
     'Quantity_log_id' => '积分日志ID',
     'User_id'         => '用户ID',
+    'Username'         => '用户账户',
     'Admin_id'        => '代理ID',
     'Orderno'         => '订单号',
     'Quantity'        => '积分',

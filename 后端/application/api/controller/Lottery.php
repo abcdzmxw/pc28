@@ -95,10 +95,11 @@ class Lottery extends Api
         }
         if (Db::name('game')->where('id', $gameId)->value('status') != 1)
             $this->error('當前停售');
-        $userQuantityInfo = Db::name('user')->where('id', $userId)->field(['money', 'score', 'nickname'])->find();
+        $userQuantityInfo = Db::name('user')->where('id', $userId)->field(['username', 'money', 'score', 'nickname'])->find();
         $temp = 5 + strlen($this->agentId);
         $orderData['orderNo'] = $issueInfo['issue'] . substr(time(), $temp) . $this->agentId . mt_rand(100000, 999999);
         $orderData['user_id'] = $userId;
+        $orderData['username'] = $userQuantityInfo['username'];
         $orderData['admin_id'] = $this->agentId;
         $orderData['issue_id'] = $issueInfo['id'];
         $orderData['game_id'] = $gameId;

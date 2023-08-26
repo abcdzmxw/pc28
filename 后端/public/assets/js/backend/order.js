@@ -30,6 +30,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'issue_id', title: __('Issue_id')},
                         {field: 'quantity_log_id', title: __('Quantity_log_id')},
                         {field: 'user_id', title: __('User_id'),formatter: Table.api.formatter.search,},
+                        {field: 'username', title: __('Username')},
                         {field: 'admin_id', title: __('Admin_id')},
                         {field: 'orderNo', title: __('Orderno'), operate: 'LIKE'},
                         {field: 'quantity', title: __('Quantity'), operate:'BETWEEN'},
