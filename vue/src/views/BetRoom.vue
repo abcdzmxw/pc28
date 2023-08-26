@@ -824,6 +824,19 @@ export default {
               if(this.whether_close){
                 console.log('结算');
               }
+
+              // add time 202308070358
+              homeApi
+                  .issueList(this.game_id)
+                  .then((data) => {
+                    console.log(data.data);
+                    let list = data.data.slice(1, 5);
+                    this.issueList = list;
+                  })
+                  .catch((err) => {
+                    this.$toast.fail(err.msg);
+                  });
+
               this.last_whether_close = this.whether_close;
 
               if (data.data.message.length != 0 && data.data.message) {

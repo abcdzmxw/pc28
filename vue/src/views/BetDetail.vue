@@ -22,7 +22,7 @@
             <div class="middle">
               <div>
                 <span>SINGAPORE</span>
-                <span class="fs-12 issue c_a0a0a0">{{$t('di')}}20211223186{{$t('lun')}}</span>
+                <span class="fs-12 issue c_a0a0a0">{{$t('di')}}{{ item.issue }}{{$t('lun')}}</span>
               </div>
               <div>
                 <div class="order-count">

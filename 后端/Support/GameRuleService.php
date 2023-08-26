@@ -515,12 +515,14 @@ class GameRuleService
         $carbon = Carbon::now('Asia/Shanghai');
         $tempIssue = (int)$carbon->rawFormat("YmdHi");
         $sur = $carbon->rawFormat('i') % 3;
+        $copyCarbon = clone $carbon;
         if ($sur == 0 and $carbon->rawFormat('s') < 30){
             $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
             $result['issue'] = $tempIssue;
-            $result['last_issue'] = (int)$carbon->subMinutes(3)->rawFormat("YmdHi");
+            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");
+            $result['a'] = 1;
             return $result;
         }elseif ($sur == 0 and $carbon->rawFormat('s') >= 30){
             $carbon->addMinutes(3);
@@ -528,16 +530,19 @@ class GameRuleService
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
             $result['issue'] = (int)$carbon->rawFormat("YmdHi");
-            $result['last_issue'] = $tempIssue;
+            $result['last_issue'] = (int)$copyCarbon->addMinutes(2)->rawFormat("YmdHi");
+            $result['a'] = 2;
             return $result;
         }else{
             $temp = 3 - $sur;
             $carbon->addMinutes($temp);
+            $copyCarbon->addMinutes($temp);
             $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
-            $result['issue'] = (int)$carbon->rawFormat("YmdHi");;
-            $result['last_issue'] = (int)$carbon->subMinutes($temp)->subMinutes($sur)->rawFormat("YmdHi");;
+            $result['issue'] = (int)$carbon->rawFormat("YmdHi");
+            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");;
+            $result['a'] = 3;
             return $result;
         }
 
@@ -545,6 +550,7 @@ class GameRuleService
 
     public static function makeRebootOrder($roomList)
     {
+        // 生成假的订单
 //        $roomList = Db::name('game_plan')->where('status',1)->select();
 //        $gameMap = array_column($gameList,'name','id');
         $Issue =GameRuleService::nowIssue();
