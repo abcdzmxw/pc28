@@ -501,7 +501,8 @@ class GameRuleService
     static public function IsClose(string $issue): bool
     {
         $carbon = Carbon::now('Asia/Shanghai');
-        $tempIssue = (int)$carbon->rawFormat("YmdHi");
+
+        $tempIssue = (int)self::calculateIncrementalSequenceFromCarbon($carbon);
 //        if ((int)$issue < $tempIssue) { //传入的期号必须大于等于 当前时间 才可能是当前期号 or (int)$issue - $tempIssue > 4
 //            return true;
 //        }
@@ -510,38 +511,68 @@ class GameRuleService
         return false;
     }
 
+    static public function calculateIncrementalSequenceFromCarbon($carbonTime): string
+    {
+        // 根据时间获取该时间对应的期号
+        $startSequence = 1; // 起始递增序列值
+        // 获取给定时间的时间戳
+        $givenTimestamp = $carbonTime->timestamp;
+        $yearMonthDay = $carbonTime->format('Ymd');
+
+        // 获取给定时间所在的日期的0时0分的时间戳
+        $startOfDayTimestamp = strtotime($carbonTime->format('Y-m-d'));
+
+        $timeDifference = $givenTimestamp - $startOfDayTimestamp; // 时间差，单位为秒
+        $timeSegments = floor($timeDifference / 180); // 经过的时间段数
+
+        $incrementalSequence = $startSequence + $timeSegments; // 计算对应的递增序列
+
+        // 将年月日和时间段数连接起来，作为一个完整的数字
+        $combinedNumber = $yearMonthDay . str_pad($incrementalSequence, 4, '0', STR_PAD_LEFT);
+
+        return $combinedNumber;
+    }
+
     static public function nowIssue(): array
     {
         $carbon = Carbon::now('Asia/Shanghai');
         $tempIssue = (int)$carbon->rawFormat("YmdHi");
+
+        /**
+         * 当前时间对3取余的余数
+         */
         $sur = $carbon->rawFormat('i') % 3;
         $copyCarbon = clone $carbon;
+
+        // 余数为0,说明是新的一期的开始
         if ($sur == 0 and $carbon->rawFormat('s') < 30){
-            $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
+            //$result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
-            $result['issue'] = $tempIssue;
-            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");
+            $result['issue'] = self::calculateIncrementalSequenceFromCarbon($copyCarbon); // 当前期数
+            $result['last_issue'] = self::calculateIncrementalSequenceFromCarbon($copyCarbon->subMinutes(1)); //上一期数=当前期数-1
             $result['a'] = 1;
             return $result;
-        }elseif ($sur == 0 and $carbon->rawFormat('s') >= 30){
+        }elseif ($sur == 0 and $carbon->rawFormat('s') >= 30){  // 余数为0,说明是新的一期的开始
             $carbon->addMinutes(3);
-            $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
+            //$result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
+            $copyCarbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
-            $result['issue'] = (int)$copyCarbon->addMinutes(1)->rawFormat("YmdHi");
-            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");
+            $lastIssueCarbon = clone $copyCarbon;
+            $result['issue'] = self::calculateIncrementalSequenceFromCarbon($copyCarbon->addMinutes(3));
+            $result['last_issue'] = self::calculateIncrementalSequenceFromCarbon($lastIssueCarbon);
             $result['a'] = 2;
             return $result;
         }else{
             $temp = 3 - $sur;
             $carbon->addMinutes($temp);
             $copyCarbon->addMinutes($temp);
-            $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
+            //$result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
-            $result['issue'] = (int)$carbon->rawFormat("YmdHi");
-            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");;
+            $result['issue'] = self::calculateIncrementalSequenceFromCarbon($carbon);
+            $result['last_issue'] = self::calculateIncrementalSequenceFromCarbon($copyCarbon->subMinutes(1));
             $result['a'] = 3;
             return $result;
         }
