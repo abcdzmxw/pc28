@@ -165,7 +165,7 @@ const tw={
 	wanjia:"玩家",
 	leibie:"類別",
 	jine:"金額",
-    caizhongmingcheng:"",
+    caizhongmingcheng:"华金证券",
     gouru:'購入',
     zanweigouru:'暫未購入',
     qigou:'起購',
