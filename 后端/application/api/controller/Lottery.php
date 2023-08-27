@@ -102,6 +102,7 @@ class Lottery extends Api
         $orderData['username'] = $userQuantityInfo['username'];
         $orderData['admin_id'] = $this->agentId;
         $orderData['issue_id'] = $issueInfo['id'];
+        $orderData['issue'] = $issueInfo['issue'];
         $orderData['game_id'] = $gameId;
         $orderData['status'] = 0;
         $orderData['odds'] = Db::name('plan_rule')->where(['game_plan_id' => $planId, 'class' => $playType])->value('odds');

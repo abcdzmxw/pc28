@@ -21,7 +21,7 @@
             <!-- 已中奖 -->
             <div class="middle">
               <div>
-                <span>SINGAPORE</span>
+                <span>{{$t('caizhongmingcheng')}}</span>
                 <span class="fs-12 issue c_a0a0a0">{{$t('di')}}{{ item.issue }}{{$t('lun')}}</span>
               </div>
               <div>

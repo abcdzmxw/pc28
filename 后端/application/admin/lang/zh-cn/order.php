@@ -2,7 +2,7 @@
 
 return [
     'Game_id'         => '游戏',
-    'Issue_id'        => '期号',
+    'Issue'        => '期号',
     'Quantity_log_id' => '积分日志ID',
     'User_id'         => '用户ID',
     'Username'         => '用户账户',
