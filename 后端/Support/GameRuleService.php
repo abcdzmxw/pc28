@@ -529,8 +529,8 @@ class GameRuleService
             $result['openTime'] = $carbon->rawFormat('Y-m-d H:i:30');
             $carbon->setSecond(30);
             $result['openTime1'] = $carbon->diffInRealSeconds(Carbon::now());
-            $result['issue'] = (int)$carbon->rawFormat("YmdHi");
-            $result['last_issue'] = (int)$copyCarbon->addMinutes(2)->rawFormat("YmdHi");
+            $result['issue'] = (int)$copyCarbon->addMinutes(1)->rawFormat("YmdHi");
+            $result['last_issue'] = (int)$copyCarbon->subMinutes(1)->rawFormat("YmdHi");
             $result['a'] = 2;
             return $result;
         }else{

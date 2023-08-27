@@ -25,6 +25,21 @@ class Carbontask extends Api
 //        if ((int)$carbon->rawFormat('i') % 3 != 0){
 //            $this->success('未到结算时间');
 //        }
+
+//        $issueIds = Db::name('issue')
+//            ->where('issue', '<=', $Issue['last_issue'])
+//            ->where('status', 0)
+//            ->column('id');
+//
+//        if (!empty($issueIds)) {
+//            Db::name('issue')
+//                ->whereIn('id', $issueIds)
+//                ->update([
+//                    'status' => '1',
+//                    'updatetime' => time()
+//                ]);
+//        }
+
         $orders = Db::name('order')->where('status',0)->select();
         $issueList = [];
         $count =0;

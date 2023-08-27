@@ -46,14 +46,24 @@ class Issue extends Backend
             if ($endDate->isSameDay($startDate)){
                 $endDate->addDay();
             }
-            $service = new GameRuleService();
+
             $game_id = (int)$this->request->param('game_id');
+
+            $tempStartDate = clone $startDate;
+            $tempStartDate->setMinute(1);
+            $startNUmber = (int)$tempStartDate->rawFormat("YmdHi");
+            $dateStr = $startDate->rawFormat("Ymd");
             while ($startDate->lt($endDate)){
-                $startDate->addMinutes(1);
-/*                $temp['issue'] = $startDate->rawFormat("YmdHis");
-                $temp['site_1'] = rand(0,9);
-                $temp['site_2'] = rand(0,9);
-                $temp['site_3'] = rand(0,9);*/
+                $tempDateStr = $startDate->rawFormat("Ymd");
+                if($dateStr != $tempDateStr){
+                    $dateStr = $tempDateStr;
+                    $tempStartDate = clone $startDate;
+                    $tempStartDate->setHour(0);
+                    $tempStartDate->setMinute(1);
+                    $startNUmber = (int)$tempStartDate->rawFormat("YmdHi");
+                }
+
+                $startDate->addMinutes(3);
                 $issue = new \app\admin\model\Issue();
                 $issue->game_id  =(int)$this->request->input('game_id');
                 $issue->site_1 = rand(0,9);
@@ -61,8 +71,10 @@ class Issue extends Backend
                 $issue->site_3 = rand(0,9);
                 $issue->game_id = $game_id;
                 $issue->code = $issue->site_1 + $issue->site_2 + $issue->site_3;
-                $issue->issue =  $startDate->rawFormat("YmdHi");
+                $issue->issue = (string)$startNUmber;
                 //$issue = $service->lotterySpecial($issue);
+                $startNUmber++;
+
 
                 try {
                     $issue->save();
