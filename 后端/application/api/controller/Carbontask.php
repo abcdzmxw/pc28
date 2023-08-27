@@ -26,19 +26,19 @@ class Carbontask extends Api
 //            $this->success('未到结算时间');
 //        }
 
-//        $issueIds = Db::name('issue')
-//            ->where('issue', '<=', $Issue['last_issue'])
-//            ->where('status', 0)
-//            ->column('id');
-//
-//        if (!empty($issueIds)) {
-//            Db::name('issue')
-//                ->whereIn('id', $issueIds)
-//                ->update([
-//                    'status' => '1',
-//                    'updatetime' => time()
-//                ]);
-//        }
+        $issueIds = Db::name('issue')
+            ->where('issue', '<=', $Issue['last_issue'])
+            ->where('status', 0)
+            ->column('id');
+
+        if (!empty($issueIds)) {
+            Db::name('issue')
+                ->whereIn('id', $issueIds)
+                ->update([
+                    'status' => '1',
+                    'updatetime' => time()
+                ]);
+        }
 
         $orders = Db::name('order')->where('status',0)->select();
         $issueList = [];

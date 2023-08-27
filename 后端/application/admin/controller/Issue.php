@@ -43,9 +43,9 @@ class Issue extends Backend
             if (count($dateArr) != 2) return $this->error("数据错误");
             $startDate = Carbon::createFromFormat("Y-m-d",$dateArr[0])->setTime(0,0,0);
             $endDate = Carbon::createFromFormat("Y-m-d",$dateArr[1])->setTime(0,0,0);
-            if ($endDate->isSameDay($startDate)){
-                $endDate->addDay();
-            }
+
+            // 所选的区间都生成闭区间
+            $endDate->addDay();
 
             $game_id = (int)$this->request->param('game_id');
 
